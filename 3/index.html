@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="increse">Add 1</button>
+      <button v-on:click="decrese">Reduce 1</button>
+      <!-- avoid logic on html as in next lines... DO NOT -->
+      <!-- <button v-on:click="counter++">Add</button>
+      <button v-on:click="counter--">Reduce</button> -->
+      <p>Result: {{ counter }}</p>
+      <!-- v-once only eval onces  -->
+      <p v-once>Starting value: {{ counter }}</p>
+      
+      <button v-on:click="addFive(5)">Add 5</button>
+      <button v-on:click="reduceFive(5)">Reduce 5</button>
+
+<!-- v-on:input ==> onChange -->
+ <!--$event ==> event from the browser when a method receives more than the event.  -->
+      <input type="text" v-on:keyup.enter="confirmInput" v-on:input="handleInputTextValue($event, 'Pepe')">
+      <!-- keyup.enter only activates when Enter is released -->
+      <p>input value: {{ confirmedName }}</p>
+
+
+
+      <form v-on:submit="handleSubmit">
+        <input type="submit" />
+      </form>
+
+      <!-- event modifier submit.prevent click.right click.middle click.left, etc... -->
+      <!--  -->
+      <form v-on:submit.prevent="handleSubmitWithDotPrevent">
+        
+        <input type="submit" />
+      </form>
+    </section>
+  </body>
+</html>
